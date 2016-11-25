@@ -3,6 +3,7 @@ function [Mx, Tbx] = cumMinEngVer(e)
 % Mx is the cumulative minimum energy map along vertical direction.
 % Tbx is the backtrack table along vertical direction.
 
+%edit
 [ny,nx] = size(e);
 Mx = zeros(ny, nx);
 Tbx = zeros(ny, nx);
