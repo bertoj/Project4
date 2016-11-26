@@ -8,18 +8,20 @@ function [My, Tby] = cumMinEngHor(e)
 My = zeros(ny, nx);
 Tby = zeros(ny, nx);
 My(:,1) = e(:,1);
+%My = cummin(e,2);
 
-%% Calculate My and Tby
-for j = 2:nx
-    for i = 1:ny
-        if i~=1
-            [val ind] = min([My(i-1,j-1),My(i,j-1),My(i+1,j-1)]);
+%%
+for i = 1:ny
+    for j = 2:nx-1
+        
+        if i==1
+        [val ind] = min([My(i-1,j-1),My(i,j-1),My(i+1,j-1)]);
+        ind = ind+1;
         else
-            [val ind] = min([My(i,j-1),My(i+1,j-1)]);
-            ind = ind+1;
+        [val ind] = min([My(i-1,j-1),My(i,j-1),My(i+1,j-1));
         end
-        Tby(i,j) = ind;
-        My(i,j) = e(i,j)+ val;
+        
+        My(i,j) = e(i,j)+ ;
     end
 end
 %min entry on My in the last column
