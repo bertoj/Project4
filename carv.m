@@ -11,6 +11,14 @@ TI{1,1} = I;
 % TI is a trace table for images. TI{r+1,c+1} records the image removed r rows and c columns.
 
 %% Add your code here
+T(1,1) = 0;
+for i = 1:(nr+nc)
+   
+        
+        
+        
+end
+
 
 Ic = TI{nr+1,nc+1};
 
