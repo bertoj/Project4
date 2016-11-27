@@ -35,21 +35,22 @@ for i = 2:nr+1
     for j = 2:nc+1
         
         % Energy Maps
-        e_rmrow = genEngMap(TI{i-1,j});
         e_rmcol = genEngMap(TI{i,j-1});
+        e_rmrow = genEngMap(TI{i-1,j});
         
         % Cumulative Energy maps
         [My, Tby] = cumMinEngHor(e_rmrow);
         [Mx, Tbx] = cumMinEngVer(e_rmcol);
         
-        % Calculate optimal seam to remove
-        [Iy, E_rmrow] = rmHorSeam(TI{i-1,j}, My, Tby);
-        [Ix, E_rmcol] = rmVerSeam(TI{i,j-1}, Mx, Tbx);
-        im = {Iy,Ix};
-        [T(i,j), ind] = min([T(i-1,j)+E_rmrow,T(i,j-1)+E_rmcol]);
-        TI{i,j} = im{ind};
+        %%
+        [Iy, E_rmrow] = rmHorSeam(TI{i-1,1}, My, Tby);
+        [Ix, E_rmcol] = rmVerSeam(TI{1,i-1}, Mx, Tbx);
+        
+        
+        
     end
 end
+
 
 Ic = TI{nr+1,nc+1};
 

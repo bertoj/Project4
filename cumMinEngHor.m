@@ -12,11 +12,13 @@ My(:,1) = e(:,1);
 %% Calculate My and Tby
 for j = 2:nx
     for i = 1:ny
-        if i~=1
-            [val ind] = min([My(i-1,j-1),My(i,j-1),My(i+1,j-1)]);
-        else
+        if i==1
             [val ind] = min([My(i,j-1),My(i+1,j-1)]);
             ind = ind+1;
+        elseif i==ny
+            [val ind] = min([My(i-1,j-1),My(i,j-1)]);
+        else
+            [val ind] = min([My(i-1,j-1),My(i,j-1),My(i+1,j-1)]);
         end
         Tby(i,j) = ind;
         My(i,j) = e(i,j)+ val;

@@ -13,10 +13,10 @@ Iy = uint8(zeros(ny-1, nx, nz));
 %% Add your code here
 
 Tby = Tby - 2;
-[val,rmIdx(nx)] = min(My(nx,:));
+[val,rmIdx(nx)] = min(My(:,nx));
 E = val;
 for i = 1:(nx-1)
-    rmIdx(nx-i) = rmIdx((nx-i)+1) + Tbx((nx-i)+1,rmIdx((nx-i)+1));
+    rmIdx(nx-i) = rmIdx((nx-i)+1) + Tby(rmIdx((nx-i)+1),(nx-i)+1);
 end
 
 % Linear ind to remove
@@ -33,7 +33,7 @@ sorted1 = sortrows(fliplr([row1,col1]));
 
 % new image
 for i = 1:((ny-1)*(nx))
-    Ix(sorted1(i,2),sorted1(i,1),:) = I(sorted(i,2),sorted(i,1),:);
+    Iy(sorted1(i,2),sorted1(i,1),:) = I(sorted(i,2),sorted(i,1),:);
 end
 
 end

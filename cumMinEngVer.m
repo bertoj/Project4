@@ -15,11 +15,13 @@ Mx(1,:) = e(1,:);
 %% Compute Mx and Tbx
 for i = 2:ny
     for j = 1:nx
-        if j~=1
-            [val ind] = min([Mx(i-1,j-1),My(i-1,j),My(i-1,j+1)]);
-        else
-            [val ind] = min([Mx(i-1,j),My(i-1,j+1)]);
+        if j==1
+            [val ind] = min([Mx(i-1,j),Mx(i-1,j+1)]);
             ind = ind+1;
+        elseif j==nx
+            [val ind] = min([Mx(i-1,j-1),Mx(i-1,j)]);
+        else
+            [val ind] = min([Mx(i-1,j-1),Mx(i-1,j),Mx(i-1,j+1)]);
         end
         Tbx(i,j) = ind;
         Mx(i,j) = e(i,j)+ val;
