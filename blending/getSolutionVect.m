@@ -1,13 +1,13 @@
 function solVector = getSolutionVect(indexes, source, target, offsetX, offsetY)
      
-[row col] = size(indexes);
-solVector = zeros(row*col,1);
-
-zero_ind = find(indexes==0);
-solVector(zero_ind) = target(zero_ind);
+% 
+% zero_ind = find(indexes==0);
+% solVector(zero_ind) = target(zero_ind);
 
 ind = find(indexes);
-
+[row col] = size(indexes);
+n= indexes(ind(end));
+solVector = zeros(n,1);
 [y x] = ind2sub(size(target),ind);
 
 for i = 1:length(ind)
