@@ -7,8 +7,8 @@ blue = reshape(blue,[row col]);
 green = reshape(green,[row col]);
 
 resultImg = zeros(row,col,3);
-resultImg(:,:,1) = red;
-resultImg(:,:,2) = blue;
-resultImg(:,:,3) = green;
+result(:,:,1) = red;
+result(:,:,2) = blue;
+result(:,:,3)
 
 end

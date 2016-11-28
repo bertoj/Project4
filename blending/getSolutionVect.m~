@@ -8,7 +8,7 @@ solVector(zero_ind) = target(zero_ind);
 
 ind = find(indexes);
 
-[y x] = ind2sub(size(target),ind);
+[y x] = ind2sub(size(source),ind);
 
 for i = 1:length(ind)
     

@@ -1,7 +1,7 @@
 function indexes = getIndexes(mask, targetH, targetW, offsetX, offsetY)
 
     % initialize matrix size
-    indexes = zeros(targetH, targetH);
+    indexes = zeros(targetH, targetW);
 
     mask2 = padarray(mask,[offsetY, offsetX],'pre');
     

@@ -1,7 +1,7 @@
 function resultImg = seamlessCloningPoisson(sourceImg, targetImg, mask, offsetX, offsetY)
 
-% sourceImg = im2double(sourceImg);
-% targetImg = im2double(targetImg);
+sourceImg = im2double(sourceImg);
+targetImg = im2double(targetImg);
 
 [targetH, targetW] = size(targetImg(:,:,1));
 [indexes] = getIndexes(mask, targetH, targetW, offsetX, offsetY);
