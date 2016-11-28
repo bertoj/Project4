@@ -21,9 +21,9 @@ targetGreen = targetImg(:,:,3);
 [solBlue] = getSolutionVect(indexes, sourceBlue, targetBlue, offsetX, offsetY);
 [solGreen] = getSolutionVect(indexes, sourceGreen, targetGreen, offsetX, offsetY);
 
-red = coefM\solRed;
-blue = coefM\solBlue;
-green = coefM\solGreen;
+red = mldivide(coefM,solRed);
+blue = mldivide(coefM,solBlue);
+green = mldivide(coefM,solGreen);
 
 resultImg = reconstructImg(indexes, red, green, blue, targetImg);
 end

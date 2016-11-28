@@ -5,17 +5,19 @@ function solVector = getSolutionVect(indexes, source, target, offsetX, offsetY)
 % solVector(zero_ind) = target(zero_ind);
 
 ind = find(indexes);
-[row col] = size(indexes);
-n= indexes(ind(end));
-solVector = zeros(n,1);
-[y x] = ind2sub(size(target),ind);
+% [row col] = size(indexes);
 
-for i = 1:length(ind)
+n = max(max(indexes));
+solVector = zeros(n,1);
+% [y x] = ind2sub(size(target),ind);
+
+for i = 1:n
+    [y x] = find(indexes==i);
+    y = y - offsetY;
+    x = x - offsetX;
+    solVector(i) = 4*source(y,x) - source(y+1,x) ...
+        -source(y-1,x) - source(y,x+1) - source(y,x-1);
     
-    y(i) = y(i) - offsetY;
-    x(i) = x(i) - offsetX;
-    solVector(ind(i)) = 4*source(y(i),x(i)) - source(y(i)+1,x(i)) ...
-        -source(y(i)-1,x(i)) - source(y(i),x(i)+1) - source(y(i),x(i)-1);
 end
 
 end

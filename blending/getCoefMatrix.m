@@ -11,18 +11,23 @@ ind = find(indexes);
 % end
 
 [row col] = size(indexes);
-n = indexes(ind(end));
+n = max(max(indexes));
 coefM = spalloc(n,n,4*n);
 %coefM = zeros(n);
 coefM(1,1) = 4;
 coefM(n,n) = 4;
-for i = 2:length(ind)-1
+
+
+in = indexes(ind);
+c = sortrows([in,ind]);
+in = c(:,1);
+for i = 2:n-1
     
-    coefM(indexes(ind(i)),indexes(ind(i))) = 4;
-    coefM(indexes(ind(i))+1,indexes(ind(i))) = -1;
-    coefM(indexes(ind(i))-1,indexes(ind(i))) = -1;
-    coefM(indexes(ind(i)),indexes(ind(i))-1) = -1;
-    coefM(indexes(ind(i)),indexes(ind(i))+1) = -1;
+    coefM(i,i) = 4;
+    coefM(i+1,i) = -1;
+    coefM(i-1,i) = -1;
+    coefM(i,i-1) = -1;
+    coefM(i,i+1) = -1;
     
 end
 
