@@ -31,7 +31,6 @@ for i = 2:nc+1
 end
 
 for i = 2:nr+1
-    
     for j = 2:nc+1
         
         % Energy Maps
@@ -50,7 +49,6 @@ for i = 2:nr+1
         TI{i,j} = im{ind};
     end
 end
-
 Ic = TI{nr+1,nc+1};
 
 end

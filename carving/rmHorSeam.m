@@ -21,6 +21,15 @@ end
 
 % Linear ind to remove
 lin_rmIdx = sub2ind([ny,nx],rmIdx,(1:nx));
+
+%UNCOMMENT TO SHOW HORIZONTAL SEAM ON ORIGINAL IMAGE
+% [i j]=ind2sub([ny nx], lin_rmIdx);
+% 
+% for k = 1:length(i)
+% I(i(k),j(k),1) = I(i(k),j(k),1)/2 +128;
+% end
+% imshow(I);
+
 mask(lin_rmIdx) = 0;
 
 % ind to keep

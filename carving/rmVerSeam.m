@@ -22,6 +22,14 @@ end
 lin_rmIdx = sub2ind([ny,nx],(1:ny)',rmIdx);
 mask(lin_rmIdx) = 0;
 
+%UNCOMMENT TO SHOW VERTICAL SEAM ON ORIGINAL IMAGE
+% [i j]=ind2sub([ny nx], lin_rmIdx);
+% 
+% for k = 1:length(i)
+% I(i(k),j(k),1) = I(i(k),j(k),1)/2 +128;
+% end
+% imshow(I);
+
 % ind to keep
 [row,col] = find(mask);
 sorted = sortrows([row,col]);
