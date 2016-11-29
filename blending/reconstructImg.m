@@ -1,6 +1,9 @@
 function resultImg = reconstructImg(indexes, red, green, blue, targetImg)
 
 [row col] = size(indexes);
+red = im2uint8(red);
+blue = im2uint8(blue);
+green = im2uint8(green);
 
 % red = reshape(red,[row col]);
 % blue = reshape(blue,[row col]);
@@ -9,7 +12,8 @@ function resultImg = reconstructImg(indexes, red, green, blue, targetImg)
 % imshow(red);
 
 resultImg = zeros(row,col,3);
-
+resultImg = im2uint8(resultImg);
+targetImg = im2uint8(targetImg);
 for i = 1:row
     for j = 1:col
         

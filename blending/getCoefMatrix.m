@@ -22,12 +22,18 @@ in = indexes(ind);
 c = sortrows([in,ind]);
 in = c(:,1);
 for i = 2:n-1
-    
+    [y x] = find(indexes==i);
     coefM(i,i) = 4;
-    coefM(i+1,i) = -1;
-    coefM(i-1,i) = -1;
-    coefM(i,i-1) = -1;
-    coefM(i,i+1) = -1;
+    Np = [indexes(y+1,x),indexes(y-1,x),indexes(y,x-1),indexes(y,x+1)];
+    Np(Np==0) = [];
+    
+    for j = 1:length(Np)
+       coefM(Np(j),i) = -1; 
+    end
+%     coefM(i+1,i) = -1;
+%     coefM(i-1,i) = -1;
+%     coefM(i,i-1) = -1;
+%     coefM(i,i+1) = -1;
     
 end
 
