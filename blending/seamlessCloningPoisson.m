@@ -25,6 +25,8 @@ targetGreen = targetImg(:,:,3);
 [solBlue] = getSolutionVect(indexes, sourceBlue, targetBlue, offsetX, offsetY);
 [solGreen] = getSolutionVect(indexes, sourceGreen, targetGreen, offsetX, offsetY);
 
+sRed = getSolutionVect1(indexes, sourceRed, targetRed, offsetX, offsetY);
+
 % Solve equation
 red = mldivide(coefM,solRed);
 blue = mldivide(coefM,solBlue);

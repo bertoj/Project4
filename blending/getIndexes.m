@@ -21,4 +21,6 @@ function indexes = getIndexes(mask, targetH, targetW, offsetX, offsetY)
     for i=2:length(ind)
        indexes(ind(i)) =  mask3(ind(i)) + indexes(ind(i-1));
     end
+    
+    
 end

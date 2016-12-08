@@ -5,10 +5,11 @@ sourceImg = imread('cookie.jpg');
 targetImg = imread('mac.jpg');
 
 % Measured Offset
-offsetX = 230;
-offsetY = 100;
+offsetX = 210;
+offsetY = 170;
 
 % Generate Blended Image
 mask = maskImage(sourceImg);
 resultImg = seamlessCloningPoisson(sourceImg, targetImg, mask, offsetX, offsetY);
-imwrite(resultImg,'BlendedImage');
+imwrite(resultImg,'BlendedImage.jpg');
+imshow(resultImg)

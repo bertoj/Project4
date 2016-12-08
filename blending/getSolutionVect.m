@@ -26,7 +26,7 @@ for i = 1:n
     
     % add value of sorrounding pixels in target
     for j = 1:size(Npind,1)
-        solVector(i) = solVector(i) + target(Npind(j,1),Npind(j,2));
+         solVector(i) = solVector(i) + target(Npind(j,1),Npind(j,2));
     end
 end
 
