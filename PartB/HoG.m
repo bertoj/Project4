@@ -12,7 +12,8 @@ s = struct('cdata',zeros(vidHeight,vidWidth,3,'uint8'),...
 k = 1;
 while hasFrame(vidObj)
     s(k).cdata = rgb2gray(readFrame(vidObj));
-    [H{k},theta{k},rho{k}] = hough(s(k).cdata);
+    BW = edge(s(k).cdata,'canny');
+    [H{k},theta{k},rho{k}] = hough(BW);
     k = k+1;
 end
 

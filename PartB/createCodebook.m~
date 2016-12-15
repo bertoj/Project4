@@ -1,0 +1,22 @@
+function codebook = createCodebook(trainingImage)
+ 
+trainingImage = rgb2gray(trainingImage);
+BW = edge(trainingImage,'canny');
+
+image = imshow(Img);
+mask_region = imfreehand;
+mask = createMask(mask_region,image);
+
+imshow(trainingImage);
+feature{1} = imfreehand; %left eye
+imshow(trainingImage);
+feature{2} = imfreehand; %right eye
+imshow(trainingImage);
+feature{3} = imfreehand; %mouth
+imshow(trainingImage);
+feature{4} = imfreehand; %chin
+imshow(trainingImage);
+feature{4} = imfreehand; %nose
+
+codebook = feature;
+end
