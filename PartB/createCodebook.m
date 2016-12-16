@@ -1,17 +1,35 @@
-function codebook = createCodebook(trainingImage)
+function CB = createCodebook(trainingImage)
  
 trainingImage = rgb2gray(trainingImage);
 BW = edge(trainingImage,'canny');
 
+CB = struct('edgeMap',[],'feature',[],'distance',[]);
+
 image = imshow(trainingImage);
-mask_region1 = imfreehand;
-mask1 = createMask(mask_region1,image);
-mask_region2 = imfreehand;
-mask2 = createMask(mask_region2,image);
+mask_region = imfreehand;
+mask = createMask(mask_region,image);
+CB(1).edgeMap = mask.*BW; %Nose
 
-feature{1} = mask1.*BW; %left eye
-feature{2} = mask2.*BW; %right eye
+[featureVector,hogVisualization] = extractHOGFeatures(BW);
+CB(1).feature = featureVector;
 
+s = regionprops(mask.*BW,'centroid');
+face_center = cat(1, s.Centroid);
+CB(1).distance = 0;
 
-codebook = feature;
+for i = 2:5
+image = imshow(trainingImage);
+mask_region = imfreehand;
+mask = createMask(mask_region,image);
+CB(i).edgeMap = mask.*BW;
+
+[featureVector,hogVisualization] = extractHOGFeatures(BW);
+CB(i).feature = featureVector;
+
+s = regionprops(mask.*BW,'centroid');
+feat_center = cat(1, s.Centroid);
+
+CB(i).distance = norm([face_center(1)-feat_center(1), face_center(2)-feat_center(2)]);
+end
+
 end
