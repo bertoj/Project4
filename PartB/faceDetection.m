@@ -1,6 +1,6 @@
 close all;clear;clc
 
-obj=vision.VideoFileReader('hard1.mp4', 'VideoOutputDataType', 'uint8',...
+obj=vision.VideoFileReader('easy1.mp4', 'VideoOutputDataType', 'uint8',...
     'ImageColorSpace', 'Intensity');
 FaceDetect = vision.CascadeObjectDetector('MinSize', [64 64]);
 

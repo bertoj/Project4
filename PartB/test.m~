@@ -1,0 +1,22 @@
+close all; clear;clc
+
+vidObj = VideoReader('easy1.mp4');
+
+[frames,edgeMaps] = getMaps(vidObj);
+
+trainingImage = imread('model7.png');
+[row, col, d] = size(trainingImage);
+for i = 1:length(frames)
+    
+    frame = frames{i};
+    faces = getFaces(frame);
+    
+    for j = 1:2
+        face = faces{1,i};
+        face = imresize(face,[row,col];
+        features = getFeatures(face);
+        CtrPts = genCtrPts(features,CB,face)
+        
+    end
+    
+end
