@@ -1,4 +1,4 @@
-function [frames,edgeMaps] = getMaps(vidObj)
+function [frames] = getMaps(vidObj)
 
 vidHeight = vidObj.Height;
 vidWidth = vidObj.Width;
@@ -9,7 +9,7 @@ vidWidth = vidObj.Width;
 k = 1;
 while hasFrame(vidObj)
     frames{k} = (readFrame(vidObj));
-    edgeMaps{k} = edge(rgb2gray(frames{k}),'canny');
+    %edgeMaps{k} = edge(rgb2gray(frames{k}),'canny');
     k = k+1;
 end
 

@@ -1,44 +1,22 @@
-function CtrPts = genCtrPts(features,CB,face)
+function CtrPts = genCtrPts(features,CB,face,num)
 
-[row col,d] = size(face);
+[row, col,d] = size(face);
 voteMap1 = zeros(row,col);
 voteMap = zeros(row,col);
-% voteMap = cell(5,1);
+
+
 for j =1:5
-    p_last = 0;
-    for i = 1:10000
+    
+    for i = 1:num
         feature = features(i).feature;
         mask = features(i).mask;
         loc = features(i).loc;
-        %     for j = 1:5
-        %     SSD(j) = norm(feature-CB(j).feature);
-        %     end
+
         SSD = norm(feature-CB(j).feature);
-        p = (exp(-SSD));
-%         if p>p_last
-%             voteMap{j} = loc;
-%             p_last = p;
-%         end
-%             
-        %[m, ind] = min(SSD);
-        %     if m<2
-        %         m = 1;
-        %     elseif (m>2 & m<4)
-        %         m = 0;
-        %     else
-        %         m = 0;
-        %     end
-        %     voteMap = voteMap + (m*mask);
-        % if m<2
-        %     m = 1;
-        % else
-        %     m=0;
-        % end
-        if p<.4
-            p = 0;
-        end
-        voteMap1(loc(2),loc(1)) = p;
-        %voteMap = voteMap+(p*mask);
+        p =exp(-SSD);
+
+        %voteMap1(loc(2),loc(1)) = p;
+        voteMap1 = voteMap1+(p*mask);
     end
         shift = CB(1).pos - CB(j).pos;
         vM = zeros(size(voteMap1));
@@ -59,8 +37,12 @@ for j =1:5
         end
         voteMap = voteMap+vM;
 end
-%colormap('hot')
-%magesc(voteMap)
+% close all;
+% figure
+% colormap('hot')
+% imagesc(voteMap)
+voteMap(voteMap==0) = 1000;
+
 [value, location] = max(voteMap(:));
 [R,C] = ind2sub(size(voteMap),location);
 
